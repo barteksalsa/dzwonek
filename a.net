@@ -1,0 +1,36 @@
+* Dzwonek do drzwi
+
+.model DMOD D (bv=500 is=1e-13 n=1.05 vj=0.7 php=0.7)
+.model QMOD NPN level=2 bf=150
+
+V1 n1 0 SIN(0 310 50 0 0 0)
+*V2 n1 0 SIN(0 310 50 10 0 180)
+R1 n1 n2 6.4k
+D1 n2 n3 DMOD
+R2 n3 n4 27
+R3 n3 n5 47k
+C1 n4 0 470uF IC=0V
+R5 n5 n6 1k
+C4 n6 0 100uF IC=0V
+R4 n5 n9 1k
+C2 n9 n8 15nF IC=0V
+C3 n8 n10 0.1uF IC=0V
+Q1 n10 n5 0 QMOD
+L1 n4 n10 3H IC=0A
+L2 n8 n4 3H IC=0A
+
+* Speaker circuit:
+L3 n11 n12 3H IC=0A
+R6 n11 n13 15
+L4 n13 n12 3H IC=0A
+* RL4 n13 n12 0  $ removed L4 and replaced with 0 Ohm
+R7 n12 0 100k
+.IC V(n11)=0, V(n12)=0, V(n13)=0
+
+* Transformer setup
+K1 L1 L2 1
+K2 L2 L3 1
+K3 L3 L1 1
+
+.end
+
