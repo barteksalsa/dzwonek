@@ -16,8 +16,8 @@ R4 n5 n9 1k
 C2 n9 n8 15nF IC=0V
 C3 n8 n10 0.1uF IC=0V
 Q1 n10 n5 0 QMOD
-L1 n4 n10 3H IC=0A
-L2 n8 n4 3H IC=0A
+L1 n4 n10 0.5H IC=0A
+L2 n8 n4  0.5H IC=0A
 
 * Speaker circuit:
 L3 n11 n12 3H IC=0A
